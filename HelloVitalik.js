@@ -1,7 +1,7 @@
 import {ethers} from "ethers";
-const provider = ethers.getDefaultProvider();
+const provider = ethers.getDefaultProvider()
 const main = async() => {
-    const balance = await provider.getBalance('Vitalik.eth');
-    console.log(`ETH Balance of vitalik: ${ethers.formatEther(balance)} ETH`);
+    const balance = await provider.getBalance('vitalik.eth');
+    console.log(`ETH Balance of vitalik: ${ethers.utils.formatEther(balance)} ETH`);
 }
 main()
