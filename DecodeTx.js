@@ -28,10 +28,9 @@ provider.on('pending', async (txHash) => {
     if (txHash) {
         const tx = await provider.getTransaction(txHash)
         j++
-        /*console.log(`看下data里是否有transfer的selector:${tx.data.indexOf(selector)}`)*/
         if (tx !== null && tx.data.indexOf(selector) !== -1) {
             console.log(`[${(new Date).toLocaleTimeString()}]监听到第${j + 1}个pending交易:${txHash}`)
-            console.log(`打印解码交易详情:${JSON.stringify(iface.parseTransaction(tx),null,2)}`)
+            console.log(`打印解码交易详情:${JSON.stringify(iface.parseTransaction(tx), null, 2)}`)
             console.log(`转账目标地址:${iface.parseTransaction(tx).args[0]}`)
             console.log(`转账金额:${ethers.utils.formatEther(iface.parseTransaction(tx).args[1])}`)
             provider.removeListener('pending', this)
